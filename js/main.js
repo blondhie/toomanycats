@@ -15,12 +15,19 @@ function main(){
     var state = "start";
 
 
-    var questionMax = 2;
+    var questionMax = 9;
     var questions = {
         "qs":[
-            {"q":"this is the first line", "a":3},
-            {"q":"this is the second line", "a":2},
-            {"q":"this is the third line", "a":1}
+            {"q":"Make out with an embarassing person", "a":3},
+            {"q":"Go thru a tough break up", "a":2},
+            {"q":"Go to dinner with friends", "a":1},
+            {"q":"Get told you are too old to be single", "a":2},
+            {"q":"Grandma asks 'when are you having kids?'", "a":3},
+            {"q":"Popped a zig-zag stitch", "a":2},
+            {"q":"Embarassed your partner on an aniversary", "a":2},
+            {"q":"Went to Wyoming for spring break", "a":3},
+            {"q":"You know what a slip-stitch is", "a":3},
+            {"q":"Grandma asks you to hang out with her", "a":1}
         ]
 
 
@@ -33,6 +40,9 @@ function main(){
         game.load.image('sky', 'assets/sky.png');
         game.load.image('ground', 'assets/platform.png');
         game.load.image('star', 'assets/star.png');
+        game.load.image('cat1', 'assets/cat1.png');
+        game.load.image('cat2', 'assets/cat2.png');
+        game.load.image('cat3', 'assets/cat3.png');
         game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 
     }
@@ -113,7 +123,8 @@ function main(){
         for (var i = 0; i < 12; i++)
         {
             //  Create a star inside of the 'stars' group
-            var star = stars.create(i * 70, 0, 'star');
+            var c =  randomInt(1,3);
+            var star = stars.create(i * 70, 0, 'cat'+c);
 
             //  Let gravity do its thing
             star.body.gravity.y = 6;
@@ -222,9 +233,9 @@ function main(){
         index2 = randomQ ();
         index3 = randomQ ();
 
-        gameText1.text = questions.qs[index1].q;
-        gameText2.text = questions.qs[index2].q;
-        gameText3.text = questions.qs[index3].q;
+        gameText1.text = "1) "+questions.qs[index1].q+", "+questions.qs[index1].a+" cats.";
+        gameText2.text = "2) "+questions.qs[index2].q+", "+questions.qs[index2].a+" cats.";
+        gameText3.text = "3) "+questions.qs[index3].q+", "+questions.qs[index3].a+" cats.";
         
         state = "question";
         // var i;
@@ -248,6 +259,10 @@ function main(){
 
     function randomQ () {
         return Math.floor(Math.random() * (questionMax - 0 + 1)) + 0;
+
+    }
+    function randomInt (x,y) {
+        return Math.floor(Math.random() * (y - x + 1)) + x;
 
     }
 
