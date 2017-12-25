@@ -231,11 +231,21 @@ function main(){
 
         index1 = randomQ ();
         index2 = randomQ ();
+
+        while(index1 == index2){
+            index2 = randomQ ();
+        }
+        
         index3 = randomQ ();
 
-        gameText1.text = "1) "+questions.qs[index1].q+", "+questions.qs[index1].a+" cats.";
-        gameText2.text = "2) "+questions.qs[index2].q+", "+questions.qs[index2].a+" cats.";
-        gameText3.text = "3) "+questions.qs[index3].q+", "+questions.qs[index3].a+" cats.";
+        while(index2 == index3 || index1 == index3){
+            index3 = randomQ ();
+
+        }
+
+        gameText1.text = "1) "+questions.qs[index1].q;
+        gameText2.text = "2) "+questions.qs[index2].q;
+        gameText3.text = "3) "+questions.qs[index3].q;
         
         state = "question";
         // var i;
